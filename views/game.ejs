@@ -14,14 +14,25 @@
         <h2>Connect the first word to the final word with other words in-between. You're given the start/end word, but not the middle words.</h2>
         <h2>Guessing incorrectly will reveal a letter in your current word. Guessing correctly will move you onto the next word.</h2>
         <h2>The current word will connect with the before and after words. For example: [hello + world], [world + map], etc...</h2>
+        <h4>This is totally not based off of a TV gameshow...</h4>
     </header>
 
-    <div class="controls">
+    <hr>
+
+    <div class="controls" id="controls">
         <input type="text" id="entry" placeholder="Enter Word">
         <button id="enter">Enter</button>
     </div>
 
+    <h1 class="final-text" id="final-text">good job!</h1>
+
+    <div class="share" id="share">
+        <button id="share-button">Share Results</button>
+        <button id="load-other">Play Previous Puzzles</button>
+    </div>
+
     <div class="game" id="game">
+        <h1>If you see this, the game has failed to start. Check the console.</h1>
         <div class="word">
             <div class="letter">A</div>
             <div class="letter">R</div>

@@ -25,6 +25,12 @@ header h1, header h2 {
     width: 100%;
 }
 
+.final-text {
+    display: none;
+    text-align: center;
+    width: 100%;
+}
+
 /* game */
 
 .game {
@@ -35,15 +41,48 @@ header h1, header h2 {
 }
 .controls {
     display: flex;
-    width: 100%;
+    width: 50%;
     justify-content: center;
     margin-top: 1rem;
+    margin: 1rem 25%;
+}
+.controls input {
+    margin-right: 1rem;
+    border: 2px solid white;
+    background-color: black;
+    padding: .5rem 5rem;
+    color: white;
+    font-family: monospace;
+    font-size: large;
+    text-align: center;
+    border-radius: .5rem;
+}
+.controls button, .share button {
+    background-color: rgb(18,138,250);
+    color: white;
+    border: 2px solid white;
+    font-family: monospace;
+    font-size: large;
+    padding: .5rem 2rem;
+    border-radius: .5rem;
+    transition: .25s background-color;
+}
+.controls button:hover, .share button:hover {
+    background-color: rgb(18,138,250,.5);
+}
+.share {
+    display: none;
+    width: 100%;
+    justify-content: center;
+}
+.share button {
+    margin-bottom: 1rem;
 }
 .game .word {
     display: flex;
     flex-wrap: nowrap;
     font-size: xx-large;
-    width: 25%;
+    /* width: 25%; */
     margin: 0 25%;
 }
 .game .word .letter {
