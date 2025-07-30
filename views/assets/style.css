@@ -1,0 +1,103 @@
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    color: white;
+    font-family: monospace;
+}
+
+header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+}
+header h1 {
+    font-size: 3rem;
+    margin: 1rem 0 0;
+}
+header h2 {
+    margin: .25rem;
+}
+header h1, header h2 {
+    width: 100%;
+}
+
+/* game */
+
+.game {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+.controls {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-top: 1rem;
+}
+.game .word {
+    display: flex;
+    flex-wrap: nowrap;
+    font-size: xx-large;
+    width: 25%;
+    margin: 0 25%;
+}
+.game .word .letter {
+    width: 2rem;
+    height: 3rem;
+    display: flex;
+    text-align: center;
+    background-color: rgb(18,138,250);
+    border: 2px solid white;
+    margin: .1rem;
+    justify-content: center;
+    align-items: center;
+}
+.game .word .letter:empty {
+    background-color: rgb(18,138,250, .25);
+}
+.game .word.active .letter {
+    background-color: rgb(18, 250, 211);
+    color: black;
+}
+.game .word.active .letter:empty {
+    background-color: rgb(18, 250, 211, .5);
+}
+.game .word.failed .letter {
+    background-color: rgb(250, 18, 18);
+    color: black;
+}
+.game .word.failed .letter:empty {
+    background-color: rgb(250, 18, 18, 0.5);
+    color: black;
+}
+
+@keyframes guess-wrong {
+    0% {
+        color: black;
+    }
+    50% {
+        background-color: rgb(250, 18, 18);
+        color: rgb(250, 18, 18);
+    }
+    100% {
+        color: black;
+    }
+}
+
+@keyframes guess-correct {
+    0% {
+        color: black;
+    }
+    50% {
+        background-color: rgb(211, 18, 250);
+        color: rgb(211, 18, 250);
+    }
+    100% {
+        color: black;
+    }
+}
