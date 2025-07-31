@@ -142,6 +142,7 @@ function LoadLocalStorageData() {
             if (states[s].solved) {
                 $(`#word-${s}-letter-${l}`).html(`<p>${solution_word[l]}</p>`);
             } else {
+                $(`#word-${s}`).addClass('failed');
                 $(`#word-${s}-letter-${l}`).html(`<p>${solution_word[l]}</p>`);
             }
         }
@@ -162,9 +163,9 @@ function GenerateShare() {
             }
             shared += '✅\n';
         } else {
-            for (let e = 0; e < GAME_STATE.states[i].guesses; e++) {
-                shared += '❌';
-            }
+            // for (let e = 0; e < GAME_STATE.states[i].guesses; e++) {
+            //     shared += '❌';
+            // }
             shared += '🚫\n';
         }
     }
@@ -228,9 +229,11 @@ function AttemptEntry() {
         if (!can_interact) return;
         $('#entry').val('');
         $('#entry')[0].dispatchEvent(new InputEvent('input'));
-        localStorage.setItem('chains_states', JSON.stringify(GAME_STATE.states));
-        localStorage.setItem('chains_current', `${SELECTED}`);
-        if (!PLAYING_PREVIOUS) localStorage.setItem('chains_last_played_date', DATE);
+        if (!PLAYING_PREVIOUS) {
+            localStorage.setItem('chains_states', JSON.stringify(GAME_STATE.states));
+            localStorage.setItem('chains_current', `${SELECTED}`);
+            localStorage.setItem('chains_last_played_date', DATE);
+        }
     }, 760);
 }
 

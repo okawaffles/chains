@@ -76,7 +76,7 @@ header h1, header h2 {
     justify-content: center;
 }
 .share button {
-    margin-bottom: 1rem;
+    margin: 0 .25rem 1rem;
 }
 .game .word {
     display: flex;
@@ -137,6 +137,62 @@ header h1, header h2 {
         color: rgb(211, 18, 250);
     }
     100% {
+        color: black;
+    }
+}
+
+/* mobile */
+@media screen and (max-width: 600px) {
+    header h1 {
+        font-size: xx-large;
+    }
+    header h2 {
+        font-size: medium;
+        margin: .25rem 1rem;
+    }
+    header h4 {
+        font-size: xx-small;
+    }
+
+    .controls input {
+        font-size: small;
+        padding: .25rem 2rem;
+    }
+
+    .share button {
+        font-size: medium;
+        padding: .25rem 1rem;
+        margin: 0 .25rem 1rem;
+    }
+
+    .game .word .letter {
+        margin: 1px;
+        border: 1px solid white;
+        font-size: large;
+        width: 1.5rem;
+        height: 2rem;
+    }
+}
+
+@media screen and (prefers-contrast: more) {
+    .game .word .letter {
+        background-color: blue;
+    }
+    .game .word .letter:empty {
+        background-color: black;
+    }
+    .game .word.active .letter {
+        background-color: #00ff00;
+    }
+    .game .word.active .letter:empty {
+        background-color: white;
+    }
+    .game .word.failed .letter {
+        background-color: red;
+        color: black;
+    }
+    .game .word.failed .letter:empty {
+        background-color: gray;
         color: black;
     }
 }

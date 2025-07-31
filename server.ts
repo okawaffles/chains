@@ -19,6 +19,9 @@ app.use('/assets', express.static(join(__dirname, 'views', 'assets')));
 app.get('/', (req, res) => {
     res.render('game');
 });
+app.get('/howtoplay', (req, res) => {
+    res.render('howtoplay');
+});
 
 app.get('/puzzle/:date', (req, res) => {
     const puzzles = JSON.parse(readFileSync(join(__dirname, 'puzzles.json'), 'utf-8'));

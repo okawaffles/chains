@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Play - Chains | millie.zone</title>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body style="text-align: center;">
+    <div class="controls">
+        <button onclick="document.location = '../'">Back to game</button>
+    </div>
+    <h1>How to play Chains</h1>
+    <hr>
+    <h2>Chains is simple. You are given the start and end word, and must find the words between that connect them.</h2>
+    <h2>You are given the first letter of your current word, and must figure out what the word is.</h2>
+    <h2>Chains will not let you guess a word that does not start with the revealed letters.</h2>
+    <img src="assets/tutorial/1.png" alt="Tutorial Image 1">
+    <h4 style="margin: 0;">Image showing the initial state of the game.</h4>
+    <h2>Guessing the word incorrectly will unlock the next letter of the word.</h2>
+    <img src="assets/tutorial/2.png" alt="Tutorial Image 2">
+    <h4 style="margin: 0;">Image showing the second word after guessing incorrectly once.</h4>
+    <h2>When there are no more letters to unlock, you have failed that word, and will move onto the next word.</h2>
+    <h2>A word will connect with its previous and next word separately. Notice how "cat" and "girl" match up, and "girl" and "friend" also connect.</h2>
+    <img src="assets/tutorial/3.png" alt="Tutorial Image 3">
+    <h4 style="margin: 0;">Image showing a failed word.</h4>
+</body>
+<style>
+    @media screen and (max-width: 600px) {
+        body {
+            padding: 1rem;
+        }
+        img {
+            width: 90%;
+        }
+    }
+</style>
+</html>
