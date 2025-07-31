@@ -39,7 +39,7 @@ function ResetGame() {
 
 async function LoadPuzzle(date: string): Promise<boolean> {
     console.log(`chains/main -- loading puzzle "${date}"`)
-    const response = await fetch(`/puzzle/${date}`);
+    const response = await fetch(`puzzle/${date}`);
     
     if (response.status == 404) {
         console.error(`chains/main -- failed to load puzzle "${date}": ${response.statusText}`);
