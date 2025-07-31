@@ -312,9 +312,10 @@ $(async function() {
         const chosen_date = new Date(prompt('Enter a date between 2025-07-30 and now.')!);
         if (chosen_date.toString() == 'Invalid Date') return alert('Invalid date chosen.');
 
-        const diff = f.getTime() - chosen_date.getTime();
-        NUMBER = Math.floor(diff / 86400000) + 1;
-        if (NUMBER < TODAY_NUMBER) {
+        const new_diff = chosen_date.getTime() - n.getTime();
+        NUMBER = Math.floor(new_diff / 86400000) + 1;
+        alert(`new number is ${NUMBER}`);
+        if (NUMBER > TODAY_NUMBER) {
             alert('Cannot load a puzzle that is newer than today\'s.');
             return this.location.reload();
         }
