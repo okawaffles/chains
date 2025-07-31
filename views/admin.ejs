@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chains Admin Panel</title>
+    <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+    <h1>Add/Update Puzzle</h1>
+    <input type="date" id="date">
+    <button id="add">Add Word</button>
+    <div id="puzzle">
+        <input type="text" id="word-0" placeholder="Word 1"><br>
+        <input type="text" id="word-1" placeholder="Word 2"><br>
+        <input type="text" id="word-2" placeholder="Word 3"><br>
+    </div>
+    <button id="update">Submit</button>
+</body>
+
+<script>
+    let word_count = 3;
+    document.getElementById('add').onclick = () => {
+        const input = document.createElement('input');
+        input.type = 'text'; input.id = `word-${word_count}`; input.placeholder = `Word ${word_count + 1}`;
+
+        document.getElementById('puzzle').appendChild(input).appendChild(document.createElement('br'));
+        word_count++;
+    }
+
+    document.getElementById('update').onclick = () => {
+        const date = document.getElementById('date').value;
+        if (date.length < 10) return alert('bad date');
+        const words = [];
+        for (let i = 0; i < word_count; i++) {
+            words.push(document.getElementById(`word-${i}`).value);
+        }
+        fetch(`/update/${date}`, {method: 'POST', body:{
+            words
+        }});
+    }
+</script>
+
+<style>
+    body {
+        text-align: center;
+    }
+    input {
+        font-family: monospace;
+        text-align: center;
+        margin: .25rem;
+        background-color: black;
+        color: white;
+        padding: .25rem;
+        border: 2px solid gray;
+        border-radius: .5rem;
+    }
+    button {
+        background-color: rgb(18,138,250);
+        font-family: monospace;
+        color: white;
+        padding: .5rem;
+        border: 2px solid white;
+        border-radius: .5rem;
+    }
+</style>
+</html>

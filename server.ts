@@ -22,12 +22,20 @@ app.get('/', (req, res) => {
 app.get('/howtoplay', (req, res) => {
     res.render('howtoplay');
 });
+app.get('/admin', (req, res) => {
+    if (!req.headers.cookie?.includes(`key=${process.env.MASTER_KEY}`)) return res.send(`<script>document.cookie='key='+prompt('Enter master key'); location.reload();</script>`);
+
+    res.render('admin');
+});
 
 app.get('/puzzle/:date', (req, res) => {
     const puzzles = JSON.parse(readFileSync(join(__dirname, 'puzzles.json'), 'utf-8'));
 
     if (!puzzles[req.params.date]) return res.status(404).end();
     res.json(puzzles[req.params.date]);
+});
+app.post('/update/:date', (req, res) => {
+    
 });
 
 app.listen(process.env.PORT).on('listening', () => {

@@ -101,10 +101,12 @@ header h1, header h2 {
 }
 .game .word.active .letter {
     background-color: rgb(18, 250, 211);
+    animation: 1s active-idle infinite;
     color: black;
 }
 .game .word.active .letter:empty {
     background-color: rgb(18, 250, 211, .5);
+    animation: 1s active-idle-none infinite;
 }
 .game .word.failed .letter {
     background-color: rgb(250, 18, 18);
@@ -138,6 +140,29 @@ header h1, header h2 {
     }
     100% {
         color: black;
+    }
+}
+
+@keyframes active-idle {
+    0% {
+        background-color: rgb(18, 250, 211);
+    }
+    50% {
+        background-color: rgb(18, 250, 211, .7);
+    }
+    100% {
+        background-color: rgb(18, 250, 211);
+    }
+}
+@keyframes active-idle-none {
+    0% {
+        background-color: rgb(18, 250, 211,.5);
+    }
+    50% {
+        background-color: rgb(18, 250, 211, .2);
+    }
+    100% {
+        background-color: rgb(18, 250, 211,.5);
     }
 }
 
