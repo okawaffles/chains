@@ -178,7 +178,7 @@ function AttemptEntry() {
     if (!can_interact) return;
     can_interact = false;
     const solution_word = GAME_STATE.solution.words[SELECTED];
-    if ($('#entry').val() == solution_word) {
+    if (($('#entry').val() as string).trim() == solution_word) {
         // yes
         for (let i = 0; i < solution_word.length; i++) {
             $(`#word-${SELECTED}-letter-${i}`).css('animation', '.75s guess-correct ease-in-out');
@@ -267,15 +267,15 @@ $(async function() {
 
     // input listener
     $('#enter').on('click', () => {
-        if ($('#entry').val() != '') AttemptEntry();
+        if (($('#entry').val() as string).trim() != '') AttemptEntry();
     });
     $(document).on('keydown', (ev) => {
-        if (ev.key == 'Enter' && $('#entry').is(':focus') && $('#entry').val() != '') AttemptEntry();
+        if (ev.key == 'Enter' && $('#entry').is(':focus') && ($('#entry').val() as string).trim() != '') AttemptEntry();
     });
     $('#entry').on('input', () => {
         // forces the shown letters to start the guess
         let shown_letters = GAME_STATE.solution.words[SELECTED].substring(0, GAME_STATE.states[SELECTED].guesses + 1);
-        if (!($('#entry').val() as string).startsWith(shown_letters) || $('#entry').val() == '') $('#entry').val(shown_letters);
+        if (!($('#entry').val() as string).trim().startsWith(shown_letters) || ($('#entry').val() as string).trim() == '') $('#entry').val(shown_letters);
     });
 
     $('#entry')[0].dispatchEvent(new InputEvent('input'));
