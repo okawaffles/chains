@@ -2,6 +2,7 @@ import express from 'express';
 import { readFileSync } from 'fs';
 import { join } from 'path';
 import { config } from 'dotenv';
+import {json, urlencoded} from 'body-parser';
 
 config({path:join(__dirname, '.env')});
 
@@ -14,6 +15,7 @@ app.use((req, res, next) => {
 
 app.set('view engine', 'ejs');
 app.use('/assets', express.static(join(__dirname, 'views', 'assets')));
+app.use(json());
 
 
 app.get('/', (req, res) => {
@@ -35,7 +37,8 @@ app.get('/puzzle/:date', (req, res) => {
     res.json(puzzles[req.params.date]);
 });
 app.post('/update/:date', (req, res) => {
-    
+    console.log(req.body);
+    res.status(206).end();
 });
 
 app.listen(process.env.PORT).on('listening', () => {

@@ -24,6 +24,9 @@ header h2 {
 header h1, header h2 {
     width: 100%;
 }
+h4 {
+    text-align: center;
+}
 
 .final-text {
     display: none;

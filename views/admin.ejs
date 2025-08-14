@@ -9,6 +9,7 @@
 <body>
     <h1>Add/Update Puzzle</h1>
     <input type="date" id="date">
+    <input type="text" id="author" placeholder="Your username">
     <button id="add">Add Word</button>
     <div id="puzzle">
         <input type="text" id="word-0" placeholder="Word 1"><br>
@@ -35,9 +36,16 @@
         for (let i = 0; i < word_count; i++) {
             words.push(document.getElementById(`word-${i}`).value);
         }
-        fetch(`/update/${date}`, {method: 'POST', body:{
-            words
-        }});
+        alert(words);
+        fetch(`/update/${date}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: {
+                words:JSON.stringify({words})
+            }
+        });
     }
 </script>
 

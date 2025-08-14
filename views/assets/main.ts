@@ -1,3 +1,5 @@
+import pluralize from "https://cdn.jsdelivr.net/npm/pluralize/+esm";
+
 interface Solution {
     date: string,
     words: Array<string>,
@@ -59,6 +61,8 @@ async function LoadPuzzle(date: string): Promise<boolean> {
         GAME_STATE.states.push({solved:false,guesses:0});
     }
     GAME_STATE.states.push({solved:true,guesses:0});
+
+    $('#author').text(`Today's puzzle is by: ${data.by}`);
 
     console.log("chains/main -- puzzle load successful");
     return true;
@@ -178,7 +182,7 @@ function AttemptEntry() {
     if (!can_interact) return;
     can_interact = false;
     const solution_word = GAME_STATE.solution.words[SELECTED];
-    if (($('#entry').val() as string).trim() == solution_word) {
+    if (($('#entry').val() as string).trim() == solution_word || pluralize.singular(($('#entry').val() as string).trim()) == solution_word) { 
         // yes
         for (let i = 0; i < solution_word.length; i++) {
             $(`#word-${SELECTED}-letter-${i}`).css('animation', '.75s guess-correct ease-in-out');
