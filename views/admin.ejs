@@ -16,10 +16,27 @@
         <input type="text" id="word-1" placeholder="Word 2"><br>
         <input type="text" id="word-2" placeholder="Word 3"><br>
     </div>
-    <button id="update">Submit</button>
+    <button id="update">Update Puzzle</button>
+    <button id="make-key" style="background-color: red !important;">Make Key For Date</button>
+    <br>
+    <h2 id="existing">current puzzle: ???</h2>
 </body>
 
 <script>
+    let key;
+    if (document.location.pathname.includes('?key=')) key = document.location.pathname.split('?key=')[1];
+
+    document.getElementById('date').oninput = () => {
+        const date = document.getElementById('date').value;
+        if (date.length < 10) return document.getElementById('existing').innerText = 'current puzzle: ???';
+
+        fetch(`puzzle/${date}`).then(async r => {
+            if (r.status != 200) return document.getElementById('existing').innerText = 'current puzzle: none';
+            r = await r.json();
+            document.getElementById('existing').innerText = 'current puzzle: ' + r.words.join(' -> ');
+        })
+    }
+
     let word_count = 3;
     document.getElementById('add').onclick = () => {
         const input = document.createElement('input');
@@ -31,20 +48,38 @@
 
     document.getElementById('update').onclick = () => {
         const date = document.getElementById('date').value;
+        const by = document.getElementById('author').value;
         if (date.length < 10) return alert('bad date');
         const words = [];
         for (let i = 0; i < word_count; i++) {
             words.push(document.getElementById(`word-${i}`).value);
         }
-        alert(words);
-        fetch(`/update/${date}`, {
+        // alert(words);
+        fetch(`update/${date}`, {
             method: 'POST',
             headers: {
                 'Content-Type':'application/json'
             },
-            body: {
-                words:JSON.stringify({words})
-            }
+            body: JSON.stringify({date, words, by})
+        }).then(c => {
+            if (c.status == 401) alert('Incorrect Master Key');
+            if (c.status == 400) alert('No permission to set this day');
+            if (c.status == 206) alert('Puzzle update success');
+        });
+    }
+
+    document.getElementById('make-key').onclick = () => {
+        const date = document.getElementById('date').value;
+        if (date.length < 10) return alert('bad date');
+        fetch(`make-key`, {
+            method: 'POST',
+            headers: {
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify({date})
+        }).then(async c => {
+            if (c.status == 401) alert('Incorrect Master Key');
+            if (c.status == 200) alert('Key: ' + (await c.json()).key);
         });
     }
 </script>
