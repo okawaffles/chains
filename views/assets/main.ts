@@ -145,6 +145,9 @@ function LoadLocalStorageData() {
         for (let l = 0; l < solution_word.length; l++) {
             if (states[s].solved) {
                 $(`#word-${s}-letter-${l}`).html(`<p>${solution_word[l]}</p>`);
+                for (let e = 0; e < 10; e++) {
+                    $(`#word-${s}-letter-${e}`).addClass('solved');
+                }
             } else {
                 $(`#word-${s}`).addClass('failed');
                 $(`#word-${s}-letter-${l}`).html(`<p>${solution_word[l]}</p>`);
@@ -188,10 +191,13 @@ function AttemptEntry() {
             $(`#word-${SELECTED}-letter-${i}`).css('animation', '.75s guess-correct ease-in-out');
             setTimeout(() => {
                 $(`#word-${SELECTED}-letter-${i}`).html(`<p>${solution_word[i]}</p>`);
+                for (let e = 0; e < 10; e++) {
+                    $(`#word-${SELECTED}-letter-${e}`).addClass('solved');
+                }
             }, 750/2);
             setTimeout(() => {
                 $(`#word-${SELECTED}-letter-${i}`).css('animation', 'none');
-            }, 750);
+            }, 700);
         }
         setTimeout(() => {
             GAME_STATE.states[SELECTED].solved = true;

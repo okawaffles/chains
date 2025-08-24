@@ -91,6 +91,9 @@ button {
     /* width: 25%; */
     margin: 0 25%;
 }
+.game .word:first-child .letter, .game .word:last-child .letter {
+    background-color: rgb(18,138,250) !important;
+}
 .game .word .letter {
     width: 2rem;
     height: 3rem;
@@ -133,6 +136,10 @@ button {
 .game .word.failed .letter:empty {
     background-color: rgb(250, 18, 18, 0.5);
     color: black;
+}
+
+.game .word .letter.solved {
+    background-color: rgb(18,138,250) !important;
 }
 
 @keyframes guess-wrong {
