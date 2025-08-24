@@ -25,9 +25,19 @@ app.use(express.json());
 app.get('/', (req, res) => {
     res.render('game');
 });
+app.get('/en', (req, res) => {
+    res.render('game');
+});
+app.get('/cn', (req, res) => {
+    res.render('game_cn');
+});
 app.get('/howtoplay', (req, res) => {
     res.render('howtoplay');
 });
+app.get('/cn/howtoplay', (req, res) => {
+    res.render('howtoplay_cn');
+});
+
 app.get('/admin', (req, res) => {
     if (!req.headers.cookie?.includes(`key=${process.env.MASTER_KEY}`)) return res.send(`<script>document.cookie='key='+prompt('Enter master key'); location.reload();</script>`);
 

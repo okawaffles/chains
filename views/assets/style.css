@@ -4,7 +4,7 @@ body {
     padding: 0;
     overflow-x: hidden;
     color: white;
-    font-family: monospace;
+    font-family: 'WDXL Lubrifont TC', 'JetBrains Mono', monospace;
 }
 
 header {
@@ -35,6 +35,9 @@ h4 {
 }
 
 /* game */
+button {
+    font-family: inherit !important;
+}
 
 .game {
     display: flex;
@@ -98,6 +101,7 @@ h4 {
     margin: .1rem;
     justify-content: center;
     align-items: center;
+    border-radius: .5rem;
 }
 .game .word .letter:empty {
     background-color: rgb(18,138,250, .25);

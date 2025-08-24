@@ -159,7 +159,7 @@ function LoadLocalStorageData() {
 }
 
 function GenerateShare() {
-    let shared = `millie.zone Chains #${NUMBER}\n➡️\n`;
+    let shared = navigator.language.toLowerCase().startsWith('zh-')?`millie.zone Chains谜题${NUMBER}\n➡️\n`:`millie.zone Chains #${NUMBER}\n➡️\n`;
     for (let i = 1; i < GAME_STATE.states.length - 1; i++) {
         if (GAME_STATE.states[i].solved) {
             for (let e = 0; e < GAME_STATE.states[i].guesses; e++) {
